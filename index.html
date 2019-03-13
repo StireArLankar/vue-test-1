@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>vue-test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+       <header>
+        <div class='wrapper'>
+          <h2 class='title'>
+          You
+          </h2>
+          <div class='healthbar'>
+            <span>{{playerHealth}}</span>
+            <div class='health' :style="playerHP"></div>
+          </div>
+        </div>
+
+        <div class='wrapper'>
+          <h2 class='title'>
+          Monster
+          </h2>
+          <div class='healthbar'>
+            <span>{{monsterHealth}}</span>
+            <div class='health' :style="monsterHP"></div>
+          </div>
+        </div>
+      </header>
+
+      <div class='control'>
+        <template v-if="isStarted">
+          <button class="action action--a" @click="attack">Attack</button>
+          <button class="action action--sp" @click="SPattack">Special Attack</button>
+          <button class="action action--h" @click="heal">Heal</button>
+          <button class="action action--gu" @click="giveUp">Give Up</button>
+        </template>
+        <button class="action action--start" @click="start" v-else>Start Game</button>
+
+      </div>
+
+      <ul class="log__list" v-if="log.length > 0">
+        <li class="log__item" v-for="action in log">{{action}}</li>
+      </ul>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
